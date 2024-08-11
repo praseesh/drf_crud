@@ -1,10 +1,14 @@
-FROM python:3.10-slim
+FROM python:3.10-slim-buster
 
-COPY requirement.txt /app/
-COPY src /app/
+WORKDIR /app
 
-WORKDIR /app/
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
-RUN pip install -r requirement.txt
+COPY . .
 
-CMD uvicorn main:app --host 0.0.0.0 --port 8000
+ENV PYTHONUNBUFFERED 1
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
