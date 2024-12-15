@@ -10,8 +10,6 @@ from .serializers import CustomUserSerializer
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
-
-
 class SignupView(APIView):
     permission_classes = [AllowAny]
 
