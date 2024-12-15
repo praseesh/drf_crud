@@ -53,7 +53,6 @@ class HomeView(APIView):
                         "message": f"Welcome {user.first_name} to the HomePage",
                         "data": serializer.data
                     },  status=status.HTTP_200_OK)
-
         return Response({'error': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class UserView(APIView):
